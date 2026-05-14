@@ -1,0 +1,91 @@
+/* Qualis design tokens — JSONC themes (dark = Aurora Night, light = Clinical Daylight) */
+
+[data-theme='dark'] {
+  --color-bg-canvas: #e9eef6;
+  --color-app-shell: #071426;
+  --color-app-shell-2: #091a33;
+  --color-panel: rgba(10, 24, 48, 0.78);
+  --color-panel-solid: #0c1e39;
+  --color-panel-alt: #10254a;
+  --color-border: rgba(125, 170, 255, 0.14);
+  --color-border-strong: rgba(125, 170, 255, 0.28);
+  --color-text-primary: #f4f8ff;
+  --color-text-secondary: rgba(231, 240, 255, 0.72);
+  --color-text-tertiary: rgba(210, 225, 255, 0.46);
+  --color-accent-blue: #4da3ff;
+  --color-accent-cyan: #61d7ff;
+  --color-accent-violet: #866cff;
+  --color-accent-magenta: #d872ff;
+  --color-accent-success: #35d98b;
+  --color-accent-warning: #ffb454;
+  --color-accent-danger: #ff6b8a;
+  --color-map-base: #314b74;
+  --color-map-cell: #415d8f;
+  --color-map-selected: #73a4ff;
+  --color-map-glow: rgba(91, 163, 255, 0.35);
+  --shadow-panel: 0 12px 40px rgba(0, 0, 0, 0.28);
+  --shadow-lifted: 0 16px 50px rgba(5, 12, 28, 0.42);
+  --glass-blur: blur(14px);
+  --radius-frame: 28px;
+  --motion-fast: 180ms;
+  --motion-normal: 260ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --color-chart-marker-fill: #0c1e39;
+  --color-chart-marker-stroke-width: 2px;
+  --color-chart-grid: rgba(77, 163, 255, 0.22);
+  --color-chart-cursor: rgba(97, 215, 255, 0.14);
+  --color-chart-national-stroke: #e8eef9;
+  /* Extra series hues for multi-facility charts (distinct from core accents) */
+  --color-chart-series-amber: #f0b429;
+  --color-chart-series-teal: #2dd4bf;
+  --color-chart-series-lime: #bef264;
+  --color-chart-series-coral: #fb923c;
+}
+
+[data-theme='light'] {
+  --color-bg-canvas: #f4f7fb;
+  --color-app-shell: #ffffff;
+  --color-app-shell-2: #f7faff;
+  --color-panel: rgba(255, 255, 255, 0.88);
+  --color-panel-solid: #ffffff;
+  --color-panel-alt: #f3f7ff;
+  --color-border: rgba(33, 66, 120, 0.1);
+  --color-border-strong: rgba(33, 66, 120, 0.16);
+  --color-text-primary: #10213d;
+  --color-text-secondary: rgba(16, 33, 61, 0.72);
+  --color-text-tertiary: rgba(16, 33, 61, 0.48);
+  --color-accent-blue: #347dff;
+  --color-accent-cyan: #10b8ff;
+  --color-accent-violet: #735bff;
+  --color-accent-magenta: #c85fff;
+  --color-accent-success: #15b86a;
+  --color-accent-warning: #e29b2d;
+  --color-accent-danger: #e55474;
+  --color-map-base: #dde7f5;
+  --color-map-cell: #c5d5f0;
+  --color-map-selected: #6f9bff;
+  --color-map-glow: rgba(77, 133, 255, 0.2);
+  --shadow-panel: 0 10px 30px rgba(31, 52, 84, 0.08);
+  --shadow-lifted: 0 16px 40px rgba(31, 52, 84, 0.12);
+  --glass-blur: blur(10px);
+  --radius-frame: 28px;
+  --motion-fast: 180ms;
+  --motion-normal: 260ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --color-chart-marker-fill: #ffffff;
+  --color-chart-marker-stroke-width: 2px;
+  --color-chart-grid: rgba(52, 125, 255, 0.2);
+  --color-chart-cursor: rgba(16, 184, 255, 0.12);
+  --color-chart-national-stroke: #111111;
+  --color-chart-series-amber: #b45309;
+  --color-chart-series-teal: #0d9488;
+  --color-chart-series-lime: #65a30d;
+  --color-chart-series-coral: #ea580c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0.01ms;
+    --motion-normal: 0.01ms;
+  }
+}

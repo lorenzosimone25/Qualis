@@ -1,0 +1,7 @@
+custom-asks/
+
+# Local secrets (copy from .env.example)
+.env
+
+__pycache__/
+*.py[cod]

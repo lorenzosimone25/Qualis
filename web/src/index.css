@@ -1,0 +1,57 @@
+@import './styles/tokens.css';
+@import 'tailwindcss';
+@config '../tailwind.config.js';
+
+@layer base {
+  html {
+    @apply antialiased;
+    scrollbar-color: color-mix(in srgb, var(--color-accent-cyan) 45%, transparent) var(--color-panel-alt);
+    scrollbar-width: thin;
+  }
+
+  *::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--color-panel-alt);
+    border-radius: 999px;
+    box-shadow: inset 0 0 0 1px var(--color-border);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent-cyan) 85%, transparent), var(--color-accent-blue));
+    border: 2px solid var(--color-panel-alt);
+    min-height: 32px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--color-accent-cyan), var(--color-accent-violet));
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: var(--color-panel-solid);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    font-family: Inter, 'IBM Plex Sans', system-ui, sans-serif;
+    color: var(--color-text-primary);
+    background: var(--color-bg-canvas);
+  }
+
+  #root {
+    margin: 0;
+    min-height: 100svh;
+    width: 100%;
+    max-width: none;
+    text-align: left;
+  }
+
+  code {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+}

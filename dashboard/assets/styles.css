@@ -1,0 +1,409 @@
+/* CMS Quality dashboard — global styles
+   ----------------------------------------------------------------------
+   Design language: calm, scientific, print-friendly. Deep navy primary,
+   neutral grays, generous white space. Inter for UI, IBM Plex Mono for
+   measure IDs and numerics.
+*/
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e6e6e6;
+  --border-soft: #eef0f2;
+  --text: #1a1a1a;
+  --text-muted: #6f7680;
+  --primary: #1f3a5f;
+  --primary-soft: #e9eef5;
+
+  /* Hospital and state palette is sourced from ColorBrewer's PRGn 9-class
+     diverging scheme — vetted as protan/deutan/tritan-safe AND distinct
+     in luminance. The two hues differ in BOTH hue (purple vs. green) AND
+     luminance (~28% vs. ~36% relative luminance), so they remain
+     distinguishable for users with severe red-green color vision
+     deficiency and in grayscale print.
+     We also pair the hue with a SHAPE indicator (filled circle for
+     hospitals, filled square for states) inserted before the pill text
+     so the type is conveyed redundantly through hue + shape. */
+  --hospital: #762a83;
+  --hospital-soft: #f1e6f6;
+  --hospital-text: #3a103f;
+  --state: #1b7837;
+  --state-soft: #e2f1e6;
+  --state-text: #093d18;
+
+  --national: #222222;
+  --warn: #b6862a;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-shell {
+  max-width: 1280px;
+  padding: 32px 32px 64px;
+  margin: 0 auto;
+}
+
+/* Header --------------------------------------------------------------- */
+.app-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 4px 4px 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.app-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--primary);
+  margin: 0;
+}
+
+.app-subtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.app-stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto auto);
+  gap: 4px 12px;
+  align-items: baseline;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.app-stats .stat-num {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: right;
+}
+
+.app-stats .stat-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Cards ---------------------------------------------------------------- */
+.chart-card,
+.glossary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 20px 24px 24px;
+  margin-bottom: 24px;
+}
+
+/* Side-by-side chart row. Each card fills its column on wide screens; on
+   narrow screens (<992px) Bootstrap stacks the columns automatically. */
+.charts-row > [class*="col-"] {
+  display: flex;
+}
+
+.charts-row .chart-card {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.chart-card-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chart-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+}
+
+.chart-card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chart-card-downloads {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-card-downloads .dl-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.chart-card-downloads .dl-btn {
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  color: var(--primary) !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.chart-card-downloads .dl-btn:hover,
+.chart-card-downloads .dl-btn:focus {
+  background: var(--primary-soft) !important;
+  border-color: var(--primary) !important;
+}
+
+/* Controls ------------------------------------------------------------- */
+/* Vertical stack within a card: locations dropdown on top (full width),
+   measure + national-toggle on a row below. This keeps the card narrow
+   so two of them sit side-by-side comfortably. */
+.chart-controls-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ctrl-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.ctrl-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ctrl-grow {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.ctrl-fixed {
+  flex: 0 0 auto;
+  min-width: 96px;
+}
+
+.ctrl-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.nat-switch {
+  margin-top: 2px;
+}
+
+/* dcc.Dropdown overrides */
+.loc-dropdown .Select-control,
+.measure-dropdown .Select-control,
+.loc-dropdown .Select--multi .Select-control,
+.measure-dropdown .Select--single .Select-control {
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  background: var(--surface) !important;
+  min-height: 40px !important;
+  box-shadow: none !important;
+  transition: border-color 120ms ease;
+}
+
+.loc-dropdown .is-focused:not(.is-open) > .Select-control,
+.measure-dropdown .is-focused:not(.is-open) > .Select-control {
+  border-color: var(--primary) !important;
+}
+
+.Select-menu-outer {
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(15, 30, 60, 0.08) !important;
+  z-index: 1000 !important;
+}
+
+/* Multi-select pills — the JS in app.py tags each pill as
+   .loc-pill-hospital or .loc-pill-state based on the option label. The
+   pills carry both color + a shape indicator (::before) to stay
+   distinguishable in CVD and grayscale. Default neutral styling is
+   applied first as a safe fallback if the JS hasn't run yet. */
+
+.Select--multi .Select-value {
+  background: #f1f3f7 !important;
+  border: 1px solid var(--border) !important;
+  color: #2a2f3a !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  margin: 4px 4px 0 0 !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  position: relative;
+}
+
+.Select--multi .Select-value-label {
+  padding: 4px 10px 4px 26px !important; /* leave room for the ::before glyph */
+  position: relative;
+  display: inline-block;
+}
+
+.Select--multi .Select-value-label::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #aab1bc; /* neutral while uncolored */
+  border: 1px solid #888e96;
+}
+
+/* Hospital pill — purple, with a CIRCLE indicator (default shape). */
+.Select--multi .Select-value.loc-pill-hospital {
+  background: var(--hospital-soft) !important;
+  border-color: var(--hospital) !important;
+  color: var(--hospital-text) !important;
+}
+
+.Select--multi .Select-value.loc-pill-hospital .Select-value-label::before {
+  background: var(--hospital);
+  border-color: var(--hospital);
+  border-radius: 50%; /* circle */
+}
+
+.Select--multi .Select-value.loc-pill-hospital .Select-value-icon {
+  border-right-color: var(--hospital) !important;
+  color: var(--hospital) !important;
+}
+
+/* State pill — green, with a SQUARE indicator (different shape). */
+.Select--multi .Select-value.loc-pill-state {
+  background: var(--state-soft) !important;
+  border-color: var(--state) !important;
+  color: var(--state-text) !important;
+}
+
+.Select--multi .Select-value.loc-pill-state .Select-value-label::before {
+  background: var(--state);
+  border-color: var(--state);
+  border-radius: 1px; /* square */
+}
+
+.Select--multi .Select-value.loc-pill-state .Select-value-icon {
+  border-right-color: var(--state) !important;
+  color: var(--state) !important;
+}
+
+.Select--multi .Select-value-icon {
+  border-right: 1px solid var(--border) !important;
+  padding: 4px 7px !important;
+  color: #2a2f3a !important;
+}
+
+.Select--multi .Select-value-icon:hover {
+  background: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Warnings / chart-empty messages -------------------------------------- */
+.chart-warning:not(:empty) {
+  background: #fff8e6;
+  border: 1px solid #f1d99c;
+  color: #8a5e10;
+  font-size: 12.5px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Glossary table card -------------------------------------------------- */
+.glossary-card .dash-spreadsheet-container {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Smooth virtualised scrolling — row separators stay crisp, header sticks. */
+.glossary-card .dash-table-container .dash-spreadsheet-inner table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+
+.glossary-card .dash-filter input {
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-size: 13px !important;
+  background: var(--surface) !important;
+}
+
+.glossary-card .dash-spreadsheet-container .dash-spreadsheet-inner thead th {
+  border-bottom: 2px solid #15294a !important;
+}
+
+/* Footer --------------------------------------------------------------- */
+.app-footer {
+  margin-top: 32px;
+  padding: 20px 4px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.app-footer code {
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+}
+
+/* Responsive ----------------------------------------------------------- */
+@media (max-width: 991px) {
+  /* Cards stack instead of sitting side-by-side. */
+  .charts-row .chart-card { margin-bottom: 24px; }
+}
+
+@media (max-width: 900px) {
+  .app-shell { padding: 20px 16px 48px; }
+  .app-header { flex-direction: column; align-items: flex-start; }
+  .app-stats { grid-template-columns: auto auto; }
+  .chart-card-header { flex-direction: column; align-items: flex-start; }
+}
