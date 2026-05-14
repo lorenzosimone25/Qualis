@@ -8,7 +8,7 @@
 
 <br/>
 
-![Qualis system architecture: relational CMS data, grounded FastAPI tool layer, and research outputs](docs/qualis-architecture.png)
+![Qualis system architecture: relational CMS data, grounded FastAPI tool layer, and research outputs](qualis.png)
 
 *🧩 Reasoning across relational tables: longitudinal CMS-style measures are harmonized into queryable structure, exposed through a controlled API for grounded agents, and synthesized into title, abstract, and findings with evidence traceability.*
 
